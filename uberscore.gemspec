@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.name          = "uberscore"
   spec.version       = Uberscore::VERSION
   spec.authors       = %w(Ox0dea shock_one)
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{A gem that makes your Ruby blocks more concise.}
+  spec.description   = %q{A gem that makes your Ruby blocks more concise.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
