@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = %w(Ox0dea shock_one)
   spec.summary       = %q{A gem that makes your Ruby blocks more concise.}
   spec.description   = %q{A gem that makes your Ruby blocks more concise.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/shockone/uberscore"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
