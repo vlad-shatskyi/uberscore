@@ -12,4 +12,8 @@ describe Uberscore do
   it "can be nested" do
     expect([[2, 3]].map(&_.map(&_ * 2))).to eq([[2, 3]].map { |array| array.map { |element| element * 2 } })
   end
+
+  it "can subscript" do
+    expect([{ name: "foo" }, { name: "bar" }].map(&_[:name])).to eq([{ name: "foo" }, { name: "bar" }].map { |hash| hash[:name] })
+  end
 end
