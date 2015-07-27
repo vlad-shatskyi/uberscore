@@ -16,4 +16,8 @@ describe Uberscore do
   it "can subscript" do
     expect([{ name: "foo" }, { name: "bar" }].map(&_[:name])).to eq([{ name: "foo" }, { name: "bar" }].map { |hash| hash[:name] })
   end
+
+  it "can use two parameters" do
+    expect([[1, 2], [3, 4]].map(&_ + _)).to eq([3, 7])
+  end
 end

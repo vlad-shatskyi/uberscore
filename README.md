@@ -18,6 +18,10 @@ Born to make your Ruby blocks more concise.
 # Subscript.
 [{ name: "foo" }, { name: "bar" }].map { |hash| hash[:name] }
 [{ name: "foo" }, { name: "bar" }].map(&_[:name])
+
+# Use multiple arguments.
+[[1, 2], [3, 4]].map(&_ + _)
+[[1, 2], [3, 4]].map { |a, b| a + b }
 ```
 
 ## Installation

@@ -11,7 +11,6 @@ module Uberscore
     undef_method :!=
     undef_method :==
     undef_method :__id__
-    undef_method :__send__
 
     def initialize
       @call_chain = []
@@ -25,7 +24,12 @@ module Uberscore
     def to_proc
       ->(object) do
         @call_chain.reduce(object) do |current, (name, args, block)|
-          current.public_send(name, *args, &block)
+          case args.first
+          when Context
+            current[0].public_send(name, current[1], &block)
+          else
+            current.public_send(name, *args, &block)
+          end
         end
       end
     end
