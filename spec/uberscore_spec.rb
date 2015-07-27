@@ -1,4 +1,5 @@
 require_relative "../lib/uberscore"
+require "pry"
 
 describe Uberscore do
   it "chains method calls" do
@@ -17,7 +18,9 @@ describe Uberscore do
     expect([{ name: "foo" }, { name: "bar" }].map(&_[:name])).to eq([{ name: "foo" }, { name: "bar" }].map { |hash| hash[:name] })
   end
 
-  it "can use two parameters" do
+  it "can use multiple parameters" do
     expect([[1, 2], [3, 4]].map(&_ + _)).to eq([3, 7])
+    expect([[1, 2], [3, 4]].map(&_ + _ * 10)).to eq([21, 43])
+    expect([[1, 2, "100"], [3, 4, "200"]].map(&_ + _ * _.to_i)).to eq([201, 803])
   end
 end

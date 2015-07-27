@@ -23,12 +23,13 @@ module Uberscore
 
     def to_proc
       ->(object) do
-        @call_chain.reduce(object) do |current, (name, args, block)|
+        @call_chain.reduce(object) do |current, (method_name, args, block)|
           case args.first
           when Context
-            current[0].public_send(name, current[1], &block)
+            sub_args = current.size > 2 ? current.drop(1) : current[1]
+            current[0].public_send(method_name, args.first.to_proc.(sub_args), *args.drop(2), &block)
           else
-            current.public_send(name, *args, &block)
+            current.public_send(method_name, *args, &block)
           end
         end
       end
