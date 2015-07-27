@@ -1,6 +1,17 @@
 # Uberscore
 
-TODO: Write a gem description
+```ruby
+# Without Uberscore
+%w[0x 0d ea].map { |element| element.hex.divmod(13)[1] == 0 }
+# With Uberscore
+%w[0x 0d ea].map(&_.hex.divmod(13)[1] == 0)
+
+[Array, Hash].map { |a_class| a_class.new(4) }
+[Array, Hash].map(&_.new(4))
+
+[[2, 3]].map { |array| array.map { |element| element * 2 } }
+[[2, 3]].map(&_.map(&_ * 2))
+```
 
 ## Installation
 
@@ -16,14 +27,6 @@ Or install it yourself as:
 
     $ gem install uberscore
 
-## Usage
+## License
 
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/uberscore/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+MIT

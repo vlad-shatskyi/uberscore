@@ -6,8 +6,7 @@ require 'uberscore/version'
 Gem::Specification.new do |spec|
   spec.name          = "uberscore"
   spec.version       = Uberscore::VERSION
-  spec.authors       = ["Volodymyr Shatsky"]
-  spec.email         = ["shockone89@gmail.com"]
+  spec.authors       = %w(Ox0dea shock_one)
   spec.summary       = %q{TODO: Write a short summary. Required.}
   spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""
@@ -20,4 +19,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
 end
