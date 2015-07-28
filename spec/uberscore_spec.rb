@@ -27,5 +27,6 @@ describe Uberscore do
     expect([[1, 2], [3, 4]].map(&_ + _ * 10)).to eq([21, 43])
     expect([[1, 2, "100"], [3, 4, "200"]].map(&_ + _ * _.to_i)).to eq([201, 803])
     expect([["text, with, commas", ""]].map(&_.gsub(",", _))).to eq(["text with commas"])
+    expect([["text, with, commas", ",", ""]].map(&_.gsub(_, _))).to eq(["text with commas"])
   end
 end
