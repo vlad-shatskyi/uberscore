@@ -18,11 +18,21 @@ Born to make your Ruby blocks more concise.
 # Subscript.
 [{ name: "foo" }, { name: "bar" }].map { |hash| hash[:name] }
 [{ name: "foo" }, { name: "bar" }].map(&_[:name])
-
-# Use multiple arguments.
-[[1, 2], [3, 4]].map(&_ + _)
-[[1, 2], [3, 4]].map { |a, b| a + b }
 ```
+
+# Name Conflict
+The method name `_` conflicts with the last expression shortcut in Pry and IRB.
+If you wish to name the method differently, define the constant `UBERSCORE_METHOD_NAME`
+before requiring the gem.
+
+```ruby
+UBERSCORE_METHOD_NAME = :it # or any other name.
+
+require "uberscore"
+
+[{ name: "foo" }, { name: "bar" }].map(&it[:name])
+```
+
 
 ## Installation
 
