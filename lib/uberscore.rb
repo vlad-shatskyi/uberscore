@@ -23,13 +23,22 @@ module Uberscore
 
     def to_proc
       ->(object) do
-        @call_chain.reduce(object) do |current, (method_name, args, block)|
-          if Context === args.first
-            args = [args.first.to_proc.(current.size > 2 ? current.drop(1) : current[1]), *args.drop(2)]
-            current = current[0]
+        @call_chain.reduce(object) do |block_params, (method_name, method_arguments, block)|
+          underscore_index = 0
+          mapped = method_arguments.map do |argument|
+            if Context === argument
+              underscore_index += 1
+
+              sub_subject = block_params[underscore_index + 1] ? block_params.drop(underscore_index) : block_params[underscore_index]
+              argument.to_proc.(sub_subject)
+            else
+              argument
+            end
           end
 
-          current.public_send(method_name, *args, &block)
+          subject = underscore_index == 0 ? block_params : block_params.first
+
+          subject.public_send(method_name, *mapped, &block)
         end
       end
     end
